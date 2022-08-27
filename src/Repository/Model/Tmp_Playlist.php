@@ -148,7 +148,7 @@ class Tmp_Playlist extends database_object
         if (isset($_COOKIE[$session_name])) {
             // Select all objects for this session
             $session    = $_COOKIE[$session_name];
-            $sql        = "SELECT `tmp_playlist_data`.`object_type`, `tmp_playlist_data`.`id`, `tmp_playlist_data`.`object_id` FROM `tmp_playlist_data` LEFT JOIN `tmp_playlist` ON `tmp_playlist`.`id` = `tmp_playlist_data`.`tmp_playlist` WHERE `tmp_playlist`.`session` = ?;";
+            $sql        = "SELECT `tmp_playlist_data`.`object_type`, `tmp_playlist_data`.`id`, `tmp_playlist_data`.`object_id` FROM `tmp_playlist_data` LEFT JOIN `tmp_playlist` ON `tmp_playlist`.`id` = `tmp_playlist_data`.`tmp_playlist` WHERE `tmp_playlist`.`session` = ?  ORDER BY `id`;";
             $db_results = Dba::read($sql, array($session));
         } else {
             // try to guess
